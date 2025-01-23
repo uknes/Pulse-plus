@@ -30,12 +30,52 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
   final Map<String, Map<String, Map<String, String>>> _translations = {
     'English': {
       'outcomes': {
-        'shockable': 'Shockable\n(VF/VT)',
-        'shockableDesc': 'Deliver one shock',
+        'shockable': 'Shockable\n(VF/pVT)',
+        'shockableDesc': 'Deliver shock',
         'nonShockable': 'Non-Shockable\n(PEA/Asystole)',
         'nonShockableDesc': 'Continue CPR',
         'rosc': 'ROSC',
-        'roscDesc': 'Stop CPR',
+        'roscDesc': 'Post-Cardiac Arrest Care',
+      },
+      'doctorSteps': {
+        'startCPR': 'Start CPR',
+        'startCPRDesc': 'Begin chest compressions immediately and provide oxygen',
+        'attachMonitor': 'Attach Monitor/Defibrillator',
+        'attachMonitorDesc': 'Assess cardiac rhythm',
+        'establishAccess': 'Establish IV/IO Access',
+        'establishAccessDesc': 'For medication administration',
+        'assessRhythm': 'Check Rhythm',
+        'assessRhythmDesc': 'Assess if rhythm is shockable (VF/pVT) or non-shockable (Asystole/PEA)',
+        'shockDelivery': 'Shock Delivery',
+        'shockDeliveryDesc': 'Deliver shock using defibrillator',
+        'cprResume': 'CPR for 2 Minutes',
+        'cprResumeDesc': 'Resume chest compressions immediately',
+        'epinephrine': 'Administer Epinephrine',
+        'epinephrineDesc': 'Every 3-5 minutes',
+        'advancedAirway': 'Advanced Airway',
+        'advancedAirwayDesc': 'Consider placement and capnography',
+        'antiarrhythmic': 'Antiarrhythmic',
+        'antiarrhythmicDesc': 'Administer Amiodarone or Lidocaine',
+        'reversibleCauses': 'Reversible Causes',
+        'reversibleCausesDesc': 'Treat H\'s and T\'s',
+        'reassessRhythm': 'Reassess Rhythm',
+        'reassessRhythmDesc': 'Check rhythm after 2 minutes of CPR',
+        'continueCare': 'Continue Care',
+        'continueCareDesc': 'Continue medications and treat causes',
+        'postCare': 'Post-Cardiac Arrest Care',
+        'postCareDesc': 'Begin post-resuscitation care',
+        'checkRosc': 'Check for ROSC',
+        'checkRoscDesc': 'Check for signs of Return of Spontaneous Circulation',
+        'continueResuscitation': 'Continue Resuscitation',
+        'continueResuscitationDesc': 'Consider appropriateness of continued efforts',
+        'subsequentShock': 'Subsequent Shock',
+        'subsequentShockDesc': 'Deliver another shock if rhythm remains shockable',
+        'continueMedications': 'Continue Medications',
+        'continueMedicationsDesc': 'Continue epinephrine and antiarrhythmic medications',
+        'monitorVentilation': 'Monitor Ventilation',
+        'monitorVentilationDesc': 'Use capnography to monitor ventilation effectiveness',
+        'immediateEpinephrine': 'Immediate Epinephrine',
+        'immediateEpinephrineDesc': 'Administer epinephrine as soon as possible for non-shockable rhythms',
       },
       'shockableSteps': {
         'assessRhythm': 'Assess Rhythm',
@@ -89,7 +129,47 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
         'nonShockable': 'Non-Choquable\n(AEP/Asystolie)',
         'nonShockableDesc': 'Continuer la RCP',
         'rosc': 'RACS',
-        'roscDesc': 'Arrêter la RCP',
+        'roscDesc': 'Soins post-arrêt cardiaque',
+      },
+      'doctorSteps': {
+        'startCPR': 'Débuter la RCP',
+        'startCPRDesc': 'Commencer immédiatement les compressions thoraciques et fournir de l\'oxygène',
+        'attachMonitor': 'Connecter Moniteur/Défibrillateur',
+        'attachMonitorDesc': 'Évaluer le rythme cardiaque',
+        'establishAccess': 'Établir un accès IV/IO',
+        'establishAccessDesc': 'Pour l\'administration des médicaments',
+        'assessRhythm': 'Vérifier le Rythme',
+        'assessRhythmDesc': 'Évaluer si le rythme est choquable (FV/TV) ou non-choquable (AEP/Asystolie)',
+        'shockDelivery': 'Délivrer un Choc',
+        'shockDeliveryDesc': 'Délivrer un choc avec le défibrillateur',
+        'cprResume': 'RCP pendant 2 Minutes',
+        'cprResumeDesc': 'Reprendre immédiatement les compressions thoraciques',
+        'epinephrine': 'Administrer l\'Épinéphrine',
+        'epinephrineDesc': 'Toutes les 3-5 minutes',
+        'advancedAirway': 'Voies Aériennes Avancées',
+        'advancedAirwayDesc': 'Envisager l\'intubation et la capnographie',
+        'antiarrhythmic': 'Antiarythmique',
+        'antiarrhythmicDesc': 'Administrer Amiodarone ou Lidocaïne',
+        'reversibleCauses': 'Causes Réversibles',
+        'reversibleCausesDesc': 'Traiter les H et les T',
+        'reassessRhythm': 'Réévaluer le Rythme',
+        'reassessRhythmDesc': 'Vérifier le rythme après 2 minutes de RCP',
+        'continueCare': 'Poursuivre les Soins',
+        'continueCareDesc': 'Continuer les médicaments et traiter les causes',
+        'postCare': 'Soins Post-Arrêt Cardiaque',
+        'postCareDesc': 'Commencer les soins post-réanimation',
+        'checkRosc': 'Vérifier le ROSC',
+        'checkRoscDesc': 'Vérifier les signes de Retour de Circulation Spontanée',
+        'continueResuscitation': 'Continuer la Réanimation',
+        'continueResuscitationDesc': 'Considérer l\'appropriation des efforts continués',
+        'subsequentShock': 'Choc Subséquent',
+        'subsequentShockDesc': 'Délivrer un autre choc si le rythme reste choquable',
+        'continueMedications': 'Continuer les Médicaments',
+        'continueMedicationsDesc': 'Continuer les épinéphrines et les médicaments antiarythmiques',
+        'monitorVentilation': 'Surveiller la Ventilation',
+        'monitorVentilationDesc': 'Utiliser la capnographie pour surveiller l\'efficacité de la ventilation',
+        'immediateEpinephrine': 'Épinéphrine Immédiate',
+        'immediateEpinephrineDesc': 'Administrer l\'épinéphrine dès que possible pour les rythmes non choquables',
       },
       'shockableSteps': {
         'assessRhythm': 'Évaluer le Rythme',
@@ -138,12 +218,52 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
     },
     'Arabic': {
       'outcomes': {
-        'shockable': 'قابل للصدمة\n(VF/VT)',
+        'shockable': 'قابل للصدمة\n(VF/pVT)',
         'shockableDesc': 'تقديم صدمة كهربائية',
         'nonShockable': 'غير قابل للصدمة\n(PEA/Asystole)',
         'nonShockableDesc': 'مواصلة الإنعاش القلبي الرئوي',
         'rosc': 'عودة التدوير التلقائي',
-        'roscDesc': 'توقف عن الإنعاش',
+        'roscDesc': 'رعاية ما بعد توقف القلب',
+      },
+      'doctorSteps': {
+        'startCPR': 'بدء الإنعاش',
+        'startCPRDesc': 'البدء فوراً بضغط الصدر وتوفير الأكسجين',
+        'attachMonitor': 'توصيل جهاز المراقبة/إزالة الرجفان',
+        'attachMonitorDesc': 'تقييم نظم القلب',
+        'establishAccess': 'تأمين مسار وريدي/عظمي',
+        'establishAccessDesc': 'لإعطاء الأدوية',
+        'assessRhythm': 'فحص النظم',
+        'assessRhythmDesc': 'تقييم ما إذا كان النظم قابلاً للصدمة (VF/pVT) أو غير قابل للصدمة (Asystole/PEA)',
+        'shockDelivery': 'تقديم الصدمة',
+        'shockDeliveryDesc': 'تقديم صدمة باستخدام جهاز إزالة الرجفان',
+        'cprResume': 'إنعاش لمدة دقيقتين',
+        'cprResumeDesc': 'استئناف ضغط الصدر فوراً',
+        'epinephrine': 'إعطاء الإبينفرين',
+        'epinephrineDesc': 'كل 3-5 دقائق',
+        'advancedAirway': 'مجرى هوائي متقدم',
+        'advancedAirwayDesc': 'النظر في التنبيب وقياس ثاني أكسيد الكربون',
+        'antiarrhythmic': 'مضاد اضطراب النظم',
+        'antiarrhythmicDesc': 'إعطاء الأميودارون أو الليدوكايين',
+        'reversibleCauses': 'الأسباب القابلة للعلاج',
+        'reversibleCausesDesc': 'علاج H\'s و T\'s',
+        'reassessRhythm': 'إعادة تقييم النظم',
+        'reassessRhythmDesc': 'فحص النظم بعد دقيقتين من الإنعاش',
+        'continueCare': 'مواصلة الرعاية',
+        'continueCareDesc': 'متابعة الأدوية وعلاج الأسباب',
+        'postCare': 'رعاية ما بعد توقف القلب',
+        'postCareDesc': 'بدء رعاية ما بعد الإنعاش',
+        'checkRosc': 'التحقق من ROSC',
+        'checkRoscDesc': 'التحقق من علامات إعادة دوران الصدر الطبيعي',
+        'continueResuscitation': 'إعادة الإنعاش',
+        'continueResuscitationDesc': 'النظر في ملاءمة الجهود المستمرة',
+        'subsequentShock': 'صدمة طلقة',
+        'subsequentShockDesc': 'إعطاء صدمة إضافية اذا بقي النظم موجب',
+        'continueMedications': 'متابعة الأدوية',
+        'continueMedicationsDesc': 'متابعة الإبينفرين والأدوية المضادة للإضطرابات النظمية',
+        'monitorVentilation': 'مراقبة التنفس',
+        'monitorVentilationDesc': 'استخدام الكابنوغرافي لمراقبة جودة التنفس',
+        'immediateEpinephrine': 'الإبينفرين الفوري',
+        'immediateEpinephrineDesc': 'إعطاء الإبينفرين فوراً للإنعاش الطبيعي',
       },
       'shockableSteps': {
         'assessRhythm': 'تقييم النظم',
@@ -192,11 +312,23 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
     },
   };
 
-  String _getTranslatedText(String category, String key) {
-    final languageProvider = Provider.of<LanguageProvider>(context, listen: false);
-    final currentLanguage = languageProvider.selectedLanguage;
-    return _translations[currentLanguage]?[category]?[key] ?? 
-           _translations['English']![category]![key]!;
+  String _getTranslatedText(String key, String category) {
+    final selectedLanguage = Provider.of<LanguageProvider>(context, listen: false).selectedLanguage;
+    
+    // Get the language map with fallback to English
+    final Map<String, dynamic> languageMap = 
+      selectedLanguage == 'English' ? _translations['English']! :
+      selectedLanguage == 'French' ? _translations['French']! :
+      selectedLanguage == 'Arabic' ? _translations['Arabic']! :
+      _translations['English']!;
+    
+    // Get the category map with fallback
+    final Map<String, dynamic> categoryMap = languageMap[category] ?? {};
+    
+    // Return the translated text with fallback
+    return categoryMap[key] ?? 
+           _translations['English']![category]?[key] ?? 
+           'Translation not found';
   }
 
   @override
@@ -243,7 +375,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
 
   Widget _buildOutcomeBox(String outcomeKey, String descriptionKey, IconData icon, bool isDarkMode, Color accentColor) {
     return GestureDetector(
-      onTap: () => _handleOutcomeSelection(_getTranslatedText('outcomes', outcomeKey)),
+      onTap: () => _handleOutcomeSelection(_getTranslatedText(outcomeKey, 'outcomes')),
       child: Container(
         width: 100,
         padding: EdgeInsets.all(8),
@@ -275,7 +407,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
             ),
             SizedBox(height: 8),
             Text(
-              _getTranslatedText('outcomes', outcomeKey),
+              _getTranslatedText(outcomeKey, 'outcomes'),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 12,
@@ -285,7 +417,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
             ),
             SizedBox(height: 4),
             Text(
-              _getTranslatedText('outcomes', descriptionKey),
+              _getTranslatedText(descriptionKey, 'outcomes'),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 10,
@@ -322,7 +454,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
 
     if (expandedOutcome != null) {
       final selectedIndex = outcomes.indexWhere((o) => 
-        _getTranslatedText('outcomes', o['outcomeKey']!) == expandedOutcome);
+        _getTranslatedText(o['outcomeKey']!, 'outcomes') == expandedOutcome);
       if (selectedIndex != -1 && selectedIndex != 1) {
         final selectedOutcome = outcomes.removeAt(selectedIndex);
         outcomes.insert(1, selectedOutcome);
@@ -342,6 +474,9 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
   }
 
   Widget _buildDecisionBranch(BuildContext context, bool isDarkMode) {
+    final bool isDoctor = widget.userType == 'Doctor' || widget.userType == 'طبيب';
+    final String category = isDoctor ? 'doctorSteps' : 'shockableSteps';
+
     return Container(
       margin: EdgeInsets.symmetric(vertical: 20),
       child: Column(
@@ -378,7 +513,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
                   ),
                   SizedBox(height: 12),
                   Text(
-                    _getTranslatedText('shockableSteps', 'assessRhythm'),
+                    _getTranslatedText('assessRhythm', category),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18,
@@ -388,7 +523,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
                   ),
                   SizedBox(height: 8),
                   Text(
-                    _getTranslatedText('shockableSteps', 'assessRhythmDesc'),
+                    _getTranslatedText('assessRhythmDesc', category),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
@@ -434,162 +569,408 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
             children: [
               _buildOutcomeBoxes(isDarkMode),
               SizedBox(height: 20),
-              if (expandedOutcome == _getTranslatedText('outcomes', 'shockable')) ...[
+              if (expandedOutcome == _getTranslatedText('shockable', 'outcomes')) ...[
                 Container(
                   height: 40,
                   width: 2,
                   color: Color(0xFFFF5E5E).withOpacity(0.5),
                 ),
-                _buildAlgorithmStep(
-                  context,
-                  'deliverShock',
-                  'deliverShockDesc',
-                  Icons.flash_on,
-                  isDarkMode,
-                  color: Color(0xFFFF5E5E),
-                  category: 'shockableSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'resumeCPR',
-                  'resumeCPRDesc',
-                  Icons.favorite,
-                  isDarkMode,
-                  color: Color(0xFFFF5E5E),
-                  category: 'shockableSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'postShockAction',
-                  'postShockActionDesc',
-                  Icons.timer,
-                  isDarkMode,
-                  color: Color(0xFFFF5E5E),
-                  category: 'shockableSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'reassessRhythm',
-                  'reassessRhythmDesc',
-                  Icons.loop,
-                  isDarkMode,
-                  color: Color(0xFFFF5E5E),
-                  category: 'shockableSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'continueCare',
-                  'continueCareDesc',
-                  Icons.health_and_safety,
-                  isDarkMode,
-                  color: Color(0xFFFF5E5E),
-                  category: 'shockableSteps',
-                  isLast: true,
-                ),
-              ] else if (expandedOutcome == _getTranslatedText('outcomes', 'rosc')) ...[
+                if (isDoctor) ...[
+                  _buildAlgorithmStep(
+                    context,
+                    'shockDelivery',
+                    'shockDeliveryDesc',
+                    Icons.flash_on,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'cprResume',
+                    'cprResumeDesc',
+                    Icons.favorite,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'establishAccess',
+                    'establishAccessDesc',
+                    Icons.medical_services,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'epinephrine',
+                    'epinephrineDesc',
+                    Icons.medication,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'advancedAirway',
+                    'advancedAirwayDesc',
+                    Icons.air,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'subsequentShock',
+                    'subsequentShockDesc',
+                    Icons.flash_on,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'cprResume',
+                    'cprResumeDesc',
+                    Icons.favorite,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'antiarrhythmic',
+                    'antiarrhythmicDesc',
+                    Icons.medication_liquid,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'reversibleCauses',
+                    'reversibleCausesDesc',
+                    Icons.search,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'checkRosc',
+                    'checkRoscDesc',
+                    Icons.monitor_heart,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'continueMedications',
+                    'continueMedicationsDesc',
+                    Icons.medication,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'monitorVentilation',
+                    'monitorVentilationDesc',
+                    Icons.air,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'reassessRhythm',
+                    'reassessRhythmDesc',
+                    Icons.loop,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'continueCare',
+                    'continueCareDesc',
+                    Icons.health_and_safety,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'doctorSteps',
+                    isLast: true,
+                  ),
+                ] else ...[
+                  _buildAlgorithmStep(
+                    context,
+                    'deliverShock',
+                    'deliverShockDesc',
+                    Icons.flash_on,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'shockableSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'resumeCPR',
+                    'resumeCPRDesc',
+                    Icons.favorite,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'shockableSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'postShockAction',
+                    'postShockActionDesc',
+                    Icons.timer,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'shockableSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'reassessRhythm',
+                    'reassessRhythmDesc',
+                    Icons.loop,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'shockableSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'continueCare',
+                    'continueCareDesc',
+                    Icons.health_and_safety,
+                    isDarkMode,
+                    color: Color(0xFFFF5E5E),
+                    category: 'shockableSteps',
+                    isLast: true,
+                  ),
+                ],
+              ] else if (expandedOutcome == _getTranslatedText('rosc', 'outcomes')) ...[
                 Container(
                   height: 40,
                   width: 2,
                   color: Color(0xFF5EFF8B).withOpacity(0.5),
                 ),
-                _buildAlgorithmStep(
-                  context,
-                  'abcdeApproach',
-                  'abcdeApproachDesc',
-                  Icons.health_and_safety,
-                  isDarkMode,
-                  color: Color(0xFF5EFF8B),
-                  category: 'roscSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'optimizeOxygenation',
-                  'optimizeOxygenationDesc',
-                  Icons.monitor_heart,
-                  isDarkMode,
-                  color: Color(0xFF5EFF8B),
-                  category: 'roscSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'ecgAssessment',
-                  'ecgAssessmentDesc',
-                  Icons.air,
-                  isDarkMode,
-                  color: Color(0xFF5EFF8B),
-                  category: 'roscSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'identifyCause',
-                  'identifyCauseDesc',
-                  Icons.medical_services,
-                  isDarkMode,
-                  color: Color(0xFF5EFF8B),
-                  category: 'roscSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'temperatureControl',
-                  'temperatureControlDesc',
-                  Icons.thermostat,
-                  isDarkMode,
-                  color: Color(0xFF5EFF8B),
-                  category: 'roscSteps',
-                  isLast: true,
-                ),
-              ] else if (expandedOutcome == _getTranslatedText('outcomes', 'nonShockable')) ...[
+                if (isDoctor) ...[
+                  _buildAlgorithmStep(
+                    context,
+                    'postCare',
+                    'postCareDesc',
+                    Icons.medical_services,
+                    isDarkMode,
+                    color: Color(0xFF5EFF8B),
+                    category: 'doctorSteps',
+                    isLast: true,
+                  ),
+                ] else ...[
+                  _buildAlgorithmStep(
+                    context,
+                    'abcdeApproach',
+                    'abcdeApproachDesc',
+                    Icons.health_and_safety,
+                    isDarkMode,
+                    color: Color(0xFF5EFF8B),
+                    category: 'roscSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'optimizeOxygenation',
+                    'optimizeOxygenationDesc',
+                    Icons.monitor_heart,
+                    isDarkMode,
+                    color: Color(0xFF5EFF8B),
+                    category: 'roscSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'ecgAssessment',
+                    'ecgAssessmentDesc',
+                    Icons.air,
+                    isDarkMode,
+                    color: Color(0xFF5EFF8B),
+                    category: 'roscSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'identifyCause',
+                    'identifyCauseDesc',
+                    Icons.medical_services,
+                    isDarkMode,
+                    color: Color(0xFF5EFF8B),
+                    category: 'roscSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'temperatureControl',
+                    'temperatureControlDesc',
+                    Icons.thermostat,
+                    isDarkMode,
+                    color: Color(0xFF5EFF8B),
+                    category: 'roscSteps',
+                    isLast: true,
+                  ),
+                ],
+              ] else if (expandedOutcome == _getTranslatedText('nonShockable', 'outcomes')) ...[
                 Container(
                   height: 40,
                   width: 2,
                   color: Color(0xFFFFB01D).withOpacity(0.5),
                 ),
-                _buildAlgorithmStep(
-                  context,
-                  'continueCPR',
-                  'continueCPRDesc',
-                  Icons.favorite,
-                  isDarkMode,
-                  color: Color(0xFFFFB01D),
-                  category: 'nonShockableSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'considerCauses',
-                  'considerCausesDesc',
-                  Icons.search,
-                  isDarkMode,
-                  color: Color(0xFFFFB01D),
-                  category: 'nonShockableSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'nonShockableAction',
-                  'nonShockableActionDesc',
-                  Icons.timer,
-                  isDarkMode,
-                  color: Color(0xFFFFB01D),
-                  category: 'nonShockableSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'reassessRhythm',
-                  'reassessRhythmDesc',
-                  Icons.loop,
-                  isDarkMode,
-                  color: Color(0xFFFFB01D),
-                  category: 'nonShockableSteps',
-                ),
-                _buildAlgorithmStep(
-                  context,
-                  'continueCare',
-                  'continueCareDesc',
-                  Icons.health_and_safety,
-                  isDarkMode,
-                  color: Color(0xFFFFB01D),
-                  category: 'nonShockableSteps',
-                  isLast: true,
-                ),
+                if (isDoctor) ...[
+                  _buildAlgorithmStep(
+                    context,
+                    'immediateEpinephrine',
+                    'immediateEpinephrineDesc',
+                    Icons.medication,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'cprResume',
+                    'cprResumeDesc',
+                    Icons.favorite,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'establishAccess',
+                    'establishAccessDesc',
+                    Icons.medical_services,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'epinephrine',
+                    'epinephrineDesc',
+                    Icons.medication,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'advancedAirway',
+                    'advancedAirwayDesc',
+                    Icons.air,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'reversibleCauses',
+                    'reversibleCausesDesc',
+                    Icons.search,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'checkRosc',
+                    'checkRoscDesc',
+                    Icons.monitor_heart,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'continueMedications',
+                    'continueMedicationsDesc',
+                    Icons.medication,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'monitorVentilation',
+                    'monitorVentilationDesc',
+                    Icons.air,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'reassessRhythm',
+                    'reassessRhythmDesc',
+                    Icons.loop,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'doctorSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'continueCare',
+                    'continueCareDesc',
+                    Icons.health_and_safety,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'doctorSteps',
+                    isLast: true,
+                  ),
+                ] else ...[
+                  _buildAlgorithmStep(
+                    context,
+                    'continueCPR',
+                    'continueCPRDesc',
+                    Icons.favorite,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'nonShockableSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'considerCauses',
+                    'considerCausesDesc',
+                    Icons.search,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'nonShockableSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'nonShockableAction',
+                    'nonShockableActionDesc',
+                    Icons.timer,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'nonShockableSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'reassessRhythm',
+                    'reassessRhythmDesc',
+                    Icons.loop,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'nonShockableSteps',
+                  ),
+                  _buildAlgorithmStep(
+                    context,
+                    'continueCare',
+                    'continueCareDesc',
+                    Icons.health_and_safety,
+                    isDarkMode,
+                    color: Color(0xFFFFB01D),
+                    category: 'nonShockableSteps',
+                    isLast: true,
+                  ),
+                ],
               ],
             ],
           ),
@@ -653,7 +1034,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
                 ),
                 SizedBox(height: 12),
                 Text(
-                  _getTranslatedText(category, stepKey),
+                  _getTranslatedText(stepKey, category),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
@@ -663,7 +1044,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
                 ),
                 SizedBox(height: 8),
                 Text(
-                  _getTranslatedText(category, descriptionKey),
+                  _getTranslatedText(descriptionKey, category),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14,
@@ -689,11 +1070,50 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
 
   List<Widget> _buildAlgorithmContent(BuildContext context, bool isDarkMode) {
     final bool isAlgorithmArticle = 
-      (widget.article.title.contains('Algorithm') || widget.article.title.contains('الخوارزميات')) &&
-      (widget.userType == 'Regular User' || widget.userType == 'مستخدم عادي') &&
-      (widget.contentType == 'Adult' || widget.contentType == 'بالغ');
+      (widget.article.title.contains('Algorithm') || widget.article.title.contains('الخوارزميات'));
 
-    if (isAlgorithmArticle) {
+    if (!isAlgorithmArticle) {
+      return [
+        Text(
+          widget.article.content,
+          style: TextStyle(
+            fontSize: 16,
+            color: isDarkMode ? Colors.white : Colors.black,
+          ),
+        ),
+      ];
+    }
+
+    if (widget.userType == 'Doctor' || widget.userType == 'طبيب') {
+      return [
+        _buildAlgorithmStep(
+          context,
+          'startCPR',
+          'startCPRDesc',
+          Icons.favorite,
+          isDarkMode,
+          category: 'doctorSteps',
+        ),
+        _buildAlgorithmStep(
+          context,
+          'attachMonitor',
+          'attachMonitorDesc',
+          Icons.monitor_heart,
+          isDarkMode,
+          category: 'doctorSteps',
+        ),
+        _buildAlgorithmStep(
+          context,
+          'establishAccess',
+          'establishAccessDesc',
+          Icons.medical_services,
+          isDarkMode,
+          category: 'doctorSteps',
+        ),
+        _buildDecisionBranch(context, isDarkMode),
+      ];
+    } else {
+      // Regular user algorithm
       return [
         _buildAlgorithmStep(
           context,
@@ -722,17 +1142,6 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> with SingleTi
         _buildDecisionBranch(context, isDarkMode),
       ];
     }
-    
-    // Return default content for other articles
-    return [
-      Text(
-        widget.article.content,
-        style: TextStyle(
-          fontSize: 16,
-          color: isDarkMode ? Colors.white : Colors.black,
-        ),
-      ),
-    ];
   }
 
   @override
